@@ -1,0 +1,142 @@
+﻿<UserControl x:Class="CyberHuman.Views.Dashboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" 
+                Background="#1E293B80"
+                BorderThickness="0,0,0,1"
+                BorderBrush="#334155"
+                Padding="32,16">
+            <Grid>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="BackButton"
+                            Style="{StaticResource BackButton}"
+                            Click="BackButton_Click"
+                            Margin="0,0,16,0">
+                        <TextBlock Text="← Voltar" FontSize="14"/>
+                    </Button>
+                    <StackPanel>
+                        <TextBlock Text="Cursos Disponíveis" 
+                                 FontSize="22" 
+                                 Foreground="White"
+                                 FontWeight="SemiBold"/>
+                        <TextBlock Text="Escolha sua nova jornada profissional" 
+                                 FontSize="13" 
+                                 Foreground="#94A3B8"
+                                 Margin="0,2,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Lista de cursos -->
+        <ScrollViewer Grid.Row="1" 
+                     VerticalScrollBarVisibility="Auto"
+                     Padding="32,24">
+            <ItemsControl x:Name="CoursesItemsControl">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="2" 
+                                   HorizontalAlignment="Stretch"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Click="CourseButton_Click"
+                                Margin="6"
+                                Padding="0"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                HorizontalContentAlignment="Stretch"
+                                Cursor="Hand">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="border"
+                                            Background="#1E293B66"
+                                            BorderBrush="#33415599"
+                                            BorderThickness="1"
+                                            CornerRadius="12"
+                                            Padding="20">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Ícone -->
+                                            <Border Grid.Column="0"
+                                                  Width="48" Height="48"
+                                                  CornerRadius="10"
+                                                  Margin="0,0,16,0"
+                                                  VerticalAlignment="Top">
+                                                <Border.Background>
+                                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                        <GradientStop Color="{Binding ColorStart}" Offset="0"/>
+                                                        <GradientStop Color="{Binding ColorEnd}" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Border.Background>
+                                                <TextBlock Text="{Binding Icon}" 
+                                                         FontSize="24"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"/>
+                                            </Border>
+
+                                            <!-- Conteúdo -->
+                                            <StackPanel Grid.Column="1">
+                                                <TextBlock Text="{Binding Title}"
+                                                         FontSize="16"
+                                                         Foreground="White"
+                                                         FontWeight="SemiBold"
+                                                         TextWrapping="Wrap"
+                                                         Margin="0,0,0,8"/>
+
+                                                <TextBlock Text="{Binding Description}"
+                                                         FontSize="12"
+                                                         Foreground="#94A3B8"
+                                                         TextWrapping="Wrap"
+                                                         LineHeight="18"
+                                                         Margin="0,0,0,12"/>
+
+                                                <WrapPanel>
+                                                    <Border Background="#33475569"
+                                                          CornerRadius="12"
+                                                          Padding="10,4"
+                                                          Margin="0,0,8,0">
+                                                        <TextBlock Text="{Binding Duration}"
+                                                                 FontSize="11"
+                                                                 Foreground="#CBD5E1"/>
+                                                    </Border>
+                                                    <Border Background="#33475569"
+                                                          CornerRadius="12"
+                                                          Padding="10,4">
+                                                        <TextBlock Text="{Binding Level}"
+                                                                 FontSize="11"
+                                                                 Foreground="#CBD5E1"/>
+                                                    </Border>
+                                                </WrapPanel>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#1E293B99"/>
+                                            <Setter TargetName="border" Property="BorderBrush" Value="#475569"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

@@ -1,0 +1,213 @@
+﻿<Window x:Class="CyberHuman.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:views="clr-namespace:CyberHuman.Views"
+        Title="CyberHuman" 
+        Height="450" 
+        Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        Background="Transparent">
+
+    <Border CornerRadius="16">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="30" 
+                            ShadowDepth="0" 
+                            Opacity="0.5" 
+                            Color="#000000"/>
+        </Border.Effect>
+
+        <Border CornerRadius="16" 
+                BorderThickness="1"
+                BorderBrush="#475569">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#0F172A" Offset="0"/>
+                    <GradientStop Color="#312E81" Offset="0.5"/>
+                    <GradientStop Color="#0F172A" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <!-- Barra de título customizada -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Título e controles da janela -->
+                <Border Grid.Row="0" 
+                        Background="#1E293B50"
+                        CornerRadius="16,16,0,0"
+                        BorderThickness="0,0,0,1"
+                        BorderBrush="#334155">
+                    <Grid>
+                        <TextBlock 
+                                 Foreground="#94A3B8"
+                                 VerticalAlignment="Center"
+                                 Margin="16,0"
+                                 FontSize="12"/>
+                        <StackPanel Orientation="Horizontal" 
+                                  HorizontalAlignment="Right"
+                                  Margin="8,0">
+                            <Button Content="—" 
+                                  Width="40" Height="30"
+                                  Click="MinimizeWindow"
+                                  Style="{StaticResource BackButton}" Foreground="#FFF5D70B"/>
+                            <Button Content="✕" 
+                                  Width="40" Height="30"
+                                  Click="CloseWindow"
+                                  Style="{StaticResource BackButton}" Foreground="#FFF50B0B"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Área de conteúdo -->
+                <Grid Grid.Row="1" x:Name="ContentArea">
+                    <Grid>
+                        <!-- Elementos decorativos -->
+                        <Ellipse Width="128" Height="128" 
+                                HorizontalAlignment="Right" VerticalAlignment="Top"
+                                Margin="0,32,48,0" Opacity="0.2">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="#EC4899" Offset="0"/>
+                                    <GradientStop Color="#FB7185" Offset="1"/>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                            <Ellipse.Effect>
+                                <BlurEffect Radius="40"/>
+                            </Ellipse.Effect>
+                        </Ellipse>
+
+                        <Ellipse Width="96" Height="96" 
+                                HorizontalAlignment="Right" VerticalAlignment="Top"
+                                Margin="0,80,80,0" Opacity="0.2">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="#10B981" Offset="0"/>
+                                    <GradientStop Color="#14B8A6" Offset="1"/>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                            <Ellipse.Effect>
+                                <BlurEffect Radius="30"/>
+                            </Ellipse.Effect>
+                        </Ellipse>
+
+                        <!-- Conteúdo principal -->
+                        <Grid Margin="40">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="0*"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Logo e branding -->
+                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                <Border Width="44" Height="40" CornerRadius="12" Margin="0,0,12,0">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#EC4899" Offset="0"/>
+                                            <GradientStop Color="#FB7185" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <TextBlock Text="🚀" FontSize="24" 
+                         HorizontalAlignment="Center" 
+                         VerticalAlignment="Center" Foreground="#FFF3EBEB"/>
+                                </Border>
+                                <TextBlock Text="CyberHuman" 
+                                            FontSize="24" 
+                                            Foreground="White"
+                                            VerticalAlignment="Center"
+                                            FontWeight="SemiBold"/>
+                            </StackPanel>
+
+                            <!-- Conteúdo central -->
+                            <StackPanel Grid.Row="2" 
+                                        VerticalAlignment="Top"
+                                        Margin="0,5,0,0"
+                                        MaxWidth="450"
+                                        HorizontalAlignment="Left" Height="266" Width="449">
+
+                                <TextBlock x:Name="Texto_Principal" FontSize="36" 
+                                            Foreground="White"
+                                            FontWeight="Bold"
+                                            TextWrapping="Wrap"
+                                            LineHeight="30"
+                                            Height="97"><Run Text="Reinvente Sua"/><LineBreak/><Run Text="Carreira Profissional"/></TextBlock>
+
+                                <TextBlock Text="Recapacitação profissional pra quem busca se digitalizar."
+                                            FontSize="16"
+                                            Foreground="#CBD5E1"
+                                            TextWrapping="Wrap"
+                                            LineHeight="26"
+                                            Margin="0,0,0,24"/>
+
+                                <!-- Badges de features -->
+                                <WrapPanel Margin="0,0,0,20">
+                                    <Border Style="{StaticResource CardStyle}" 
+                                            Margin="0,0,12,12" 
+                                            Padding="12,8"
+                                            Background="#33475569">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="👥" FontSize="14" Margin="0,0,8,0" Foreground="#FF100B0B"/>
+                                            <TextBlock Text="Todas as Idades" 
+                                                       FontSize="13" 
+                                                       Foreground="#E2E8F0"/>
+                                        </StackPanel>
+                                        
+                                    </Border>
+
+                                    <Border Style="{StaticResource CardStyle}" 
+                                            Margin="0,0,12,12" 
+                                            Padding="12,8"
+                                            Background="#33475569">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="🎯" FontSize="14" Margin="0,0,8,0" FontFamily="Segoe UI Emoji"/>
+                                            <TextBlock Text="Prático e Objetivo" 
+                                                       FontSize="13" 
+                                                       Foreground="#E2E8F0"/>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <Border Style="{StaticResource CardStyle}" 
+                                            Margin="0,0,12,12" 
+                                            Padding="12,8"
+                                            Background="#33475569">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="🏆" FontSize="14" Margin="0,0,8,0" Foreground="#FFEAC209"/>
+                                            <TextBlock Text="Certificado" 
+                                                        FontSize="13" 
+                                                        Foreground="#E2E8F0"/>
+                                        </StackPanel>
+                                    </Border>
+                                </WrapPanel>
+
+                                <!-- Botões CTA -->
+                                <StackPanel Orientation="Horizontal" Height="50">
+                                    <Button x:Name="StartButton"
+                                            Style="{StaticResource PrimaryButton}"
+                        
+                                            Margin="0,0,16,0" Height="49">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Começar Agora" Margin="0,0,8,0"/>
+                                            <TextBlock Text="→" FontSize="18"/>
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button Style="{StaticResource SecondaryButton}">
+                                        <TextBlock Text="Saiba Mais"/>
+                                    </Button>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+        </Border>
+    </Border>
+</Window>
