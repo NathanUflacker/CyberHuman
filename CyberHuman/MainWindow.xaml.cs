@@ -11,10 +11,10 @@ namespace CyberHuman
         {
             InitializeComponent();
 
-            // Permitir arrastar a janela
+            // Permite arrastar a janela
             this.MouseLeftButtonDown += (s, e) => { if (e.ButtonState == MouseButtonState.Pressed) this.DragMove(); };
 
-            // Carregar tela inicial
+            // Carrega tela inicial
             ShowWelcomeScreen();
         }
 
