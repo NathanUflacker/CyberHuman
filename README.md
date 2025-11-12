@@ -75,6 +75,6 @@ Trocar de tela -> Eventos customizados -> OnBack, OnStart e OnCourseSelected
 
 Herança -> MainWindow : Window (entre outros....) ||
 Encapsulamento -> Cada tela tem classes próprias e lógica isolada ||
-Polimorfismo -> Manipulação de eventos genéricos (OnBack, OnStart) ||
+Polimorfismo -> Manipulação de eventos (OnBack, OnStart) ||
 Abstração -> O usuário não precisa saber o que cada tela faz internamente
 
